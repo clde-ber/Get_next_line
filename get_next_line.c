@@ -8,6 +8,7 @@ int		get_next_line(int fd, char **line)
 	size_t tab_size;
 	size_t len_line;
 	int boolean;
+	char *str;
 
 	tab_size = 0;
 	len_line = 0;
@@ -18,6 +19,9 @@ int		get_next_line(int fd, char **line)
 	{
 		len_line = read(fd, buf, BUFFER_SIZE);
 		buf = malloc(sizeof(char) * (len_line + 1));
-		line[tab_size] = (boolean) ? ft_strrchr(&fd[len_line], '\n') : fd[len_line];
+		if (boolean)
+			line[tab_size] = ft_strrchr(&fd[len_line], '\n');
+		else
+			line[tab_size] = fd[len_line];
 		tab_size++;
 }
