@@ -2,20 +2,21 @@
 
 int		get_next_line(int fd, char **line)
 {
-	size_t size;
+	size_t tab_size;
+	size_t len_line;
 	int fd;
 	char *buf;
 	int boolean;
-	int reading;
 
-	size = 0;
+	tab_size = 0;
+	len_line = 0;
 	boolean = 0;
 	if (fd < 0)
 		return (0);
-	reading = read(fd, buf, BUFFER_SIZE);
-	while (reading)
+	while (read(fd, buf, BUFFER_SIZE))
 	{
-		buf = malloc(sizeof(char) * (xxxx + 1));
-		line[size] = ;
-		size++;
+		len_line = read(fd, buf, BUFFER_SIZE);
+		buf = malloc(sizeof(char) * (len_line + 1));
+		line[tab_size] = ;
+		tab_size++;
 }
