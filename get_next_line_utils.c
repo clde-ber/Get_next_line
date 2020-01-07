@@ -1,15 +1,3 @@
-char	*ft_strchr(const char *s, int c)
-{
-	size_t	i;
-	char	*str;
-
-	i = 0;
-	str = (char *)s;
-	while (str[i] && str[i] != (char)c)
-		i++;
-	return (str[i] == c ? str : NULL);
-}
-
 char	*ft_strrchr(const char *s, int c)
 {
 	size_t	i;
@@ -25,3 +13,14 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	return (0);
 }
+
+char	*ft_extract_str(const char *s, char c)
+{
+		size_t i;
+
+		i = 0;
+		while (s[i])
+		{
+			if (s[i] == '\n')
+				return (
+			i++;
