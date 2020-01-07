@@ -15,5 +15,7 @@ int		get_next_line(int fd, char **line)
 	reading = read(fd, buf, BUFFER_SIZE);
 	while (reading)
 	{
-
+		buf = malloc(sizeof(char) * (xxxx + 1));
+		line[size] = ;
+		size++;
 }
