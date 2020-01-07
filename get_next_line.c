@@ -1,11 +1,12 @@
 #define BUFFER_SIZE 1024
 
+static int	fd;
+static char	*buf;
+
 int		get_next_line(int fd, char **line)
 {
 	size_t tab_size;
 	size_t len_line;
-	int fd;
-	char *buf;
 	int boolean;
 
 	tab_size = 0;
@@ -17,6 +18,6 @@ int		get_next_line(int fd, char **line)
 	{
 		len_line = read(fd, buf, BUFFER_SIZE);
 		buf = malloc(sizeof(char) * (len_line + 1));
-		line[tab_size] = ;
+		line[tab_size] = (boolean) ? ft_strrchr(&fd[len_line], '\n') : fd[len_line];
 		tab_size++;
 }
