@@ -1,3 +1,5 @@
+#include "get_next_line.h"
+
 char	*ft_strrchr(const char *s, int c)
 {
 	size_t	i;
@@ -13,14 +15,3 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	return (0);
 }
-
-char	*ft_extract_str(const char *s, char c)
-{
-		size_t i;
-
-		i = 0;
-		while (s[i])
-		{
-			if (s[i] == '\n')
-				return (
-			i++;
