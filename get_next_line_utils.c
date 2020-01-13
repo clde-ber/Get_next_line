@@ -1,5 +1,24 @@
 #include "get_next_line.h"
 
+size_t	ft_get_index(size_t i, char *buf, size_t BUFFER_SIZE)
+{
+	size_t j;
+
+	j = 0;
+	while (buf[j] != '\n')
+		j++;
+	return (j);
+}
+
+char	ft_get_letter(size_t k, char **line,  char *buf)
+{
+	if (buf[k] == '\n')
+		return ('\0');
+	if (buf[k] != '\n')
+		return (buf[k]);
+	return ('\0');
+}
+
 char	*ft_strchr(const char *s, int c)
 {
 	char	*str;
@@ -51,14 +70,3 @@ char	*ft_strrchr(const char *s, int c)
 	ptr[i + j] = '\0';
 	return (ptr);
 }*/
-
-size_t	ft_set_size(char c)
-{
-	if (c == '\n')
-	{
-		printf("%zu\n", 1);
-		return (0);
-	}
-	printf("%zu\n", 0);
-	return (1);
-}
