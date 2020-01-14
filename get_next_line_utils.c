@@ -1,5 +1,22 @@
 #include "get_next_line.h"
 
+char	*ft_strdup(char *s1)
+{
+	size_t	i;
+	char	*ptr;
+
+	i = 0;
+	if (!(ptr = malloc(sizeof(char) * (ft_strlen(s1) + 1))))
+		return (0);
+	while (s1[i])
+	{
+		ptr[i] = s1[i];
+		i++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
+}
+
 size_t	ft_strlen(char *str)
 {
 	size_t i;
@@ -29,34 +46,6 @@ char	ft_get_letter(size_t k, char **line,  char *buf)
 	return ('\0');
 }
 
-size_t	ft_read(char **line, int fd, size_t BUFFER_SIZE)
-{
-	size_t i;
-	char c[1];
-
-	i = 0;
-	while (c[0] != '\n')
-	{
-//		if (c[0] == '\0')
-//			return (0);
-		if (!((line[0][i] = malloc(sizeof(char)))))
-			return (0);
-		read(fd, &c, 1);
-		if (c[0] == '\n')
-			break;
-		line[0][i] = c[0];
-		i++;
-	}
-//	if (!(line[0][i] = malloc(sizeof(char))))
-//		return (0);
-	line[0][i] = '\0';
-	while (c[0] == '\n' || c[0] == '\0')
-		read(fd, &c, 1);
-	printf("%s\n", *line);
-	printf("a");
-	return (1);
-}
-
 char	*ft_strchr(const char *s, int c)
 {
 	char	*str;
@@ -83,7 +72,7 @@ char	*ft_strrchr(const char *s, int c)
 	return (0);
 }
 
-/*char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	size_t	i;
 	size_t	j;
@@ -106,4 +95,4 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	ptr[i + j] = '\0';
 	return (ptr);
-}*/
+}
