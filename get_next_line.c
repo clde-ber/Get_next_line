@@ -15,18 +15,17 @@ int		get_next_line(int fd, char **line)
 	{
 		if (i < BUFFER_SIZE)
 		{
-			if (buf[i + 1] != '\n')
-			line[0] = ft_strdup(&buf[i]);i
 			i = ft_get_index(i, buf, BUFFER_SIZE);
 			if (!(*line = malloc(sizeof(char) * (i + 1))))
 				return (0);
 			printf("%zu\n", i);
-			while (j <= i)
+			while (j < i)
 			{
 				line[0][j] = ft_get_letter(k, line, buf);
 				j++;
 				k++;
 			}
+			line[0][j] = '\0';
 			printf("%s\n", *line);
 			return (buf[j] == '\n') ? 1 : 0;
 		}
