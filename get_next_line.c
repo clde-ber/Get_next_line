@@ -1,5 +1,5 @@
 #include "get_next_line.h"
-#define BUFFER_SIZE 100
+#define BUFFER_SIZE 62
 
 int		get_next_line(int fd, char **line)
 {
@@ -11,14 +11,14 @@ int		get_next_line(int fd, char **line)
 	i = 0;
 	j = 0;
 	k = 0;
-	while (BUFFER_SIZE > 0 && read(fd, buf, BUFFER_SIZE) >= 0)
+	while (BUFFER_SIZE > 0 && read(fd, buf, BUFFER_SIZE) > 0)
 	{
-		if (i < BUFFER_SIZE)
+		while (i < BUFFER_SIZE)
 		{
 			i = ft_get_index(i, buf, BUFFER_SIZE);
 			if (!(*line = malloc(sizeof(char) * (i + 1))))
 				return (0);
-			printf("%zu\n", i);
+				printf("%zu\n", i);
 			while (j < i)
 			{
 				line[0][j] = ft_get_letter(k, line, buf);
@@ -27,9 +27,10 @@ int		get_next_line(int fd, char **line)
 			}
 			line[0][j] = '\0';
 			printf("%s\n", *line);
-			return (buf[j] == '\n') ? 1 : 0;
+			return (buf[k] == '\n') ? 1 : 0;
 		}
 		j = 0;
 	}
 	return (-1);
 }
+
