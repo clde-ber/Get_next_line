@@ -1,5 +1,15 @@
 #include "get_next_line.h"
 
+size_t	ft_strlen(char *str)
+{
+	size_t i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
 size_t	ft_get_index(size_t i, char *buf, size_t BUFFER_SIZE)
 {
 	size_t j;
@@ -17,6 +27,34 @@ char	ft_get_letter(size_t k, char **line,  char *buf)
 	if (buf[k] != '\n')
 		return (buf[k]);
 	return ('\0');
+}
+
+size_t	ft_read(char **line, int fd, size_t BUFFER_SIZE)
+{
+	size_t i;
+	char c[1];
+
+	i = 0;
+	while (c[0] != '\n')
+	{
+//		if (c[0] == '\0')
+//			return (0);
+		if (!((line[0][i] = malloc(sizeof(char)))))
+			return (0);
+		read(fd, &c, 1);
+		if (c[0] == '\n')
+			break;
+		line[0][i] = c[0];
+		i++;
+	}
+//	if (!(line[0][i] = malloc(sizeof(char))))
+//		return (0);
+	line[0][i] = '\0';
+	while (c[0] == '\n' || c[0] == '\0')
+		read(fd, &c, 1);
+	printf("%s\n", *line);
+	printf("a");
+	return (1);
 }
 
 char	*ft_strchr(const char *s, int c)
@@ -50,7 +88,6 @@ char	*ft_strrchr(const char *s, int c)
 	size_t	i;
 	size_t	j;
 	char	*ptr;
-
 	i = 0;
 	j = 0;
 	if (!s1 || !s2)
