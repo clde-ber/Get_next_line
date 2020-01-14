@@ -27,10 +27,10 @@ int		get_next_line(int fd, char **line)
 			}
 			line[0][j] = '\0';
 			printf("%s\n", *line);
-			return (buf[k] == '\n') ? 1 : 0;
+			return (buf[k] == '\n') ? 1 : -1;
 		}
 		j = 0;
 	}
-	return (-1);
+	return (0);
 }
 
