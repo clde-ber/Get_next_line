@@ -52,7 +52,7 @@ int		get_next_line(int fd, char **line)
 	//				return (0);
 	//			printf("ft-strlenstock + 1 %zu\n", ft_strlen(stock) + 1);
 					line[0] = ft_strjoin(line[0], stock);
-					printf("%s\n", line[0]);
+					printf("%s", line[0]);
 					ft_del_stock(stock);
 					return(1);
 			}
