@@ -1,5 +1,5 @@
 #include "get_next_line.h"
-#define BUFFER_SIZE 62
+#define BUFFER_SIZE 2000
 
 int		get_next_line(int fd, char **line)
 {
@@ -42,11 +42,11 @@ int		get_next_line(int fd, char **line)
 			if (stock[0] == '\0' || stock[0])
 			{
 				printf("*stock %c\n", *stock);
-				if (res)
-				{	printf("line[0] %s\n", line[0]);
-					return (1);}
+			//	if (res)
+			//	{	printf("line[0] %s\n", line[0]);
+			//		return (1);}
 				printf("strlen stock %zu\n", ft_strlen(stock));
-				if ((ft_strlen(stock) == 1 && *stock) || ft_strlen(stock) == BUFFER_SIZE - 1)
+				if (/*(ft_strlen(stock) == 1 && *stock) ||*/ ft_strlen(stock) == BUFFER_SIZE - 1)
 				{
 					if (!(stock = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 						return (0);
