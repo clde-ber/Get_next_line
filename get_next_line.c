@@ -8,6 +8,7 @@ int		get_next_line(int fd, char **line)
 	size_t k;
 	int		res;
 	char buf[BUFFER_SIZE];
+	char end[BUFFER_SIZE];
 	static char *stock;
 
 	i = 0;
@@ -70,7 +71,15 @@ int		get_next_line(int fd, char **line)
 							i++;
 							stock = stock + i;
 						}
-				//		if (stock[i] == '\0')
+						if (stock[i] == '\0')
+						{
+							res = read(fd, end, BUFFER_SIZE);
+							while (res < BUFFER_SIZE)
+								end[res++] = '\0';
+							line[0] = ft_strjoin(line[0], end);
+							printf("line[0] boucle finale %s\n", line[0]);
+							return (0);
+						}
 					if (!(line[0] = malloc(sizeof(char) * i)))
 						return (0);
 					j = 0;
