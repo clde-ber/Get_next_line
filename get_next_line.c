@@ -1,5 +1,5 @@
 #include "get_next_line.h"
-#define BUFFER_SIZE 35
+#define BUFFER_SIZE 1000
 
 int		get_next_line(int fd, char **line)
 {
@@ -51,12 +51,24 @@ int		get_next_line(int fd, char **line)
 			//	printf("strlen stock %zu\n", ft_strlen(stock));
 			//	if (ft_strlen(stock) == BUFFER_SIZE - 1)
 			//	{
-			//	k = ft_get_index(k, buf, BUFFER_SIZE) + 1;
 				if (!stock || ft_strlen(stock) == BUFFER_SIZE - 1)
 				{	printf("aaaaa");
 					if (!(stock = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 						return (0);
 					read(fd, stock, BUFFER_SIZE);
+					k = ft_get_index(k, stock, BUFFER_SIZE) + 1;
+					if (k == BUFFER_SIZE + 1){
+						line[0] = ft_strdup("");
+						line[0] = ft_strjoin(line[0], stock);
+				while (k == BUFFER_SIZE + 1)
+				{
+					read(fd, buf, BUFFER_SIZE);
+					line[0] = ft_strjoin(line[0], buf);
+					k = ft_get_index(k, buf, BUFFER_SIZE) + 1;
+					printf("line[0] boucle petit BUFFER %s\n", line[0]);
+					return (1);
+				}
+				}
 					stock[BUFFER_SIZE - 1] = '\0';
 					printf("stock :%s\n", stock);
 				}
