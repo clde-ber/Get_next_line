@@ -44,7 +44,8 @@ int		get_next_line(int fd, char **line)
 				if (res)
 				{	printf("line[0] %s\n", line[0]);
 					return (1);}
-				if (*stock == '\0')
+				printf("strlen stock %zu\n", ft_strlen(stock));
+				if (ft_strlen(stock) == 1)
 				{
 					if (!(stock = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 						return (0);
@@ -77,7 +78,7 @@ int		get_next_line(int fd, char **line)
 					printf("stock2 :%s\n", stock);
 					printf("line[0] %s\n", line[0]);
 					printf("res %d", res);
-					ft_del_stock(stock);
+				//	ft_del_stock(stock);
 					return(1);
 			}
 		}
