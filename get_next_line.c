@@ -38,6 +38,8 @@ int		get_next_line(int fd, char **line)
 				k++;
 			}
 			line[0][j] = '\0';
+			printf("line[0] %s\n line[0]", line[0]);
+			return (1);
 			}
 			if (stock[0] == '\0' || stock[0])
 			{
