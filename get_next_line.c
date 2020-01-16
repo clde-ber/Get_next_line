@@ -19,17 +19,17 @@ int		get_next_line(int fd, char **line)
 		{
 			if (!stock)
 			{
-				res = 1;
+				res = -1;
 				printf("premiereboucle\n");
 				read(fd, buf, BUFFER_SIZE);
 	//			printf("%d\n", res);
-				i = ft_get_index(i, buf, BUFFER_SIZE);
+				i = ft_get_index(i, buf, BUFFER_SIZE) + 1;
 	//			printf("%zu\n", i);
 			if (!(line[0] = malloc(sizeof(char) * (i + 1))))
 				return (0);
-	//		printf("i : %zu\n", i);
-			stock = (i < BUFFER_SIZE) ? ft_fill_stock(i, BUFFER_SIZE, &buf[i], BUFFER_SIZE - i) :
-				ft_strdup("");
+			printf("i 1 : %zu\n", i);
+			stock = (i < BUFFER_SIZE - 1) ? ft_fill_stock(i, BUFFER_SIZE, &buf[i], BUFFER_SIZE - i) :
+				ft_strdup("startmdp");
 	//		printf("stock :%s\n", stock);
 			while (j < i)
 			{
@@ -41,15 +41,17 @@ int		get_next_line(int fd, char **line)
 			printf("line[0] %s\n line[0]", line[0]);
 			return (1);
 			}
-			if (stock[0] == '\0' || stock[0])
+			if (/*stock[0] == '\0' ||*/ stock[0])
 			{
-				printf("*stock %c\n", *stock);
+				printf("stock %s\n", stock);
+			//	printf("iiiiiiiiii %zu\n", i);
 			//	if (res)
 			//	{	printf("line[0] %s\n", line[0]);
 			//		return (1);}
 				printf("strlen stock %zu\n", ft_strlen(stock));
-				if (/*(ft_strlen(stock) == 1 && *stock) ||*/ ft_strlen(stock) == BUFFER_SIZE - 1)
+				if (ft_strlen(stock) == BUFFER_SIZE - 1)
 				{
+					printf("aaaaa");
 					if (!(stock = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 						return (0);
 					read(fd, stock, BUFFER_SIZE);
@@ -64,7 +66,7 @@ int		get_next_line(int fd, char **line)
 					{
 						buf[i] = stock[i];
 						i++;
-						printf("i : %zu\n", i);
+			//			printf("i : %zu\n", i);
 					}
 					buf[i] = '\0';
 					printf("BUF = %s\n", buf);
