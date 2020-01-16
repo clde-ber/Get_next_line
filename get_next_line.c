@@ -63,22 +63,25 @@ int		get_next_line(int fd, char **line)
 						i++;
 						printf("i : %zu\n", i);
 					}
+					buf[i] = '\0';
+					printf("BUF = %s\n", buf);
 						if (stock[i] == '\n')
 						{	printf("AAAAA");
 							i++;
 							stock = stock + i;
 						}
 				//		if (stock[i] == '\0')
-					if (!(line[0] = malloc(sizeof(char) * (i + 1))))
+					if (!(line[0] = malloc(sizeof(char) * i)))
 						return (0);
 					j = 0;
-					while (buf[j] && ft_strlen(stock) != BUFFER_SIZE - 1 && j++ < i)
-						line[0][j] = buf[j];
-					line[0][j] = '\0';
-					if (res == 0)
-					line[0] = stock;
+					line[0] = buf;
+			//		while (buf[j] && ft_strlen(stock) != BUFFER_SIZE - 1 && j++ < i)
+			//			line[0][j] = buf[j];
+			//		line[0][j] = '\0';
+			//		if (res == 0)
+			//		line[0] = stock;
 					printf("stock2 :%s\n", stock);
-					printf("line[0] %s\n", line[0]);
+					printf("line[0] %s\n line[0]", line[0]);
 					printf("res %d", res);
 				//	ft_del_stock(stock);
 					return(1);
