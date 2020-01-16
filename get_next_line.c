@@ -57,14 +57,20 @@ int		get_next_line(int fd, char **line)
 						return (0);
 					read(fd, stock, BUFFER_SIZE);
 					k = ft_get_index(k, stock, BUFFER_SIZE) + 1;
+					printf("k = %zu\n", k);
 					if (k == BUFFER_SIZE + 1){
 						line[0] = ft_strdup("");
 						line[0] = ft_strjoin(line[0], stock);
+						printf("k = %zu\n", k);
 				while (k == BUFFER_SIZE + 1)
 				{
 					read(fd, buf, BUFFER_SIZE);
+					k += ft_get_index(k + 1, buf, BUFFER_SIZE) + 1;
 					line[0] = ft_strjoin(line[0], buf);
-					k = ft_get_index(k, buf, BUFFER_SIZE) + 1;
+					printf("k = %zu\n", k);
+					if (k <= BUFFER_SIZE * 2)
+					while (k <= BUFFER_SIZE * 2)
+						line[0][k++] = '\0';
 					printf("line[0] boucle petit BUFFER %s\n", line[0]);
 					return (1);
 				}
