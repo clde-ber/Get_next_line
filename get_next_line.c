@@ -40,7 +40,7 @@ int		get_next_line(int fd, char **line)
 			}
 			if (stock[0] == '\0' || stock[0])
 			{
-	//			printf("a");
+				printf("*stock %c\n", *stock);
 				if (res)
 				{	printf("line[0] %s\n", line[0]);
 					return (1);}
@@ -68,6 +68,7 @@ int		get_next_line(int fd, char **line)
 							i++;
 							stock = stock + i;
 						}
+				//		if (stock[i] == '\0')
 					if (!(line[0] = malloc(sizeof(char) * (i + 1))))
 						return (0);
 					j = 0;
