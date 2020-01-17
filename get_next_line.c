@@ -56,21 +56,22 @@ int		get_next_line(int fd, char **line)
 					if (!(stock = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 						return (0);
 					read(fd, stock, BUFFER_SIZE);
-					k = ft_get_index(k, stock, BUFFER_SIZE) + 1;
+					k = ft_get_index(k, stock, BUFFER_SIZE);
 					printf("k = %zu\n", k);
-					if (k == BUFFER_SIZE + 1){
+					if (k == BUFFER_SIZE){
 						line[0] = ft_strdup("");
 						line[0] = ft_strjoin(line[0], stock);
-						printf("k = %zu\n", k);
-				while (k == BUFFER_SIZE + 1)
+				while (k == BUFFER_SIZE)
 				{
 					read(fd, buf, BUFFER_SIZE);
-					k += ft_get_index(k, buf, BUFFER_SIZE) + 1;
+					printf("k ! = %zu\n", k);
+					k += ft_get_index(k - 1, buf, BUFFER_SIZE);
 					line[0] = ft_strjoin(line[0], buf);
 					printf("k = %zu\n", k);
-					if (k - 1 <= BUFFER_SIZE * 2)
-					while (k - 1 <= BUFFER_SIZE * 2)
+					if (k <= ft_strlen(line[0]))
+					while (k <= ft_strlen(line[0]))
 						line[0][k++] = '\0';
+						printf("%zu\n", k);
 					printf("line[0] boucle petit BUFFER %s\n", line[0]);
 					return (1);
 				}
