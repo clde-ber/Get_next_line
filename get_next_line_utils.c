@@ -1,5 +1,67 @@
 #include "get_next_line.h"
 
+int	ft_find_n(char *buf, size_t size)
+{
+	size_t i;
+
+	i = 0;
+	while (i < size && buf[i])
+	{
+		if (buf[i] == '\n')
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
+void	ft_clear_left(char *left, size_t size)
+{
+	int k;
+
+	k = ft_find_n(left, size);
+	if (k != -1)
+	{
+		ft_memmove(left, left + k + 1, ft_strlen(left));
+		left[ft_strlen(left)] = '\0';
+	}
+	else
+		left[0] = '\0';
+}
+
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	unsigned char	*tmp_src;
+	unsigned char	*tmp_dst;
+
+	if (!dst && !src)
+		return (NULL);
+	if (src <= dst)
+	{
+		tmp_dst = (unsigned char *)dst;
+		tmp_src = (unsigned char *)src;
+		while (len--)
+			tmp_dst[len] = tmp_src[len];
+	}
+	else
+		ft_memcpy(dst, src, len);
+	return (dst);
+}
+
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	size_t i;
+
+	if (!dst && !src)
+		return (NULL);
+	i = 0;
+	while (i < n)
+	{
+		((char *)dst)[i] = ((char *)src)[i];
+		i++;
+	}
+	return (dst);
+}
+
 char	*ft_strdup(char *s1)
 {
 	size_t	i;
@@ -27,18 +89,18 @@ size_t	ft_strlen(char *str)
 	return (i);
 }
 
-size_t	ft_get_index(size_t i, char *buf, size_t BUFFER_SIZE)
+size_t	ft_get_index(size_t j, char *buf, size_t BUFFER_SIZE)
 {
-	size_t j;
+	size_t i;
 
-	j = 0;
-	while (j < BUFFER_SIZE)
+	i = 0;
+	while (i < BUFFER_SIZE * j)
 	{
-		if (buf[j] == '\n')
+		if (buf[i] == '\n')
 			break;
-		j++;
+		i++;
 	}
-	return (j);
+	return (i);
 }
 
 char	*ft_fill_stock(size_t i, size_t BUFFER_SIZE, char *buf, size_t len)
