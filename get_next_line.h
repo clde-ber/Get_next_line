@@ -16,5 +16,10 @@ size_t	ft_read(char **line, int fd, size_t BUFFER_SIZE);
 char 	*ft_fill_stock(size_t i, size_t BUFFER_SIZE, char *buf, size_t len);
 void	ft_del_stock(char *stock);
 char	*ft_strdup(char *s1);
+int	ft_find_n(char *buf, size_t size);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
+void	*ft_memmove(void *dst, const void *src, size_t len);
+void	ft_clear_left(char *left, size_t size);
+
 
 #endif
