@@ -12,34 +12,34 @@ int		get_next_line(int fd, char **line)
 	static char *stock;
 
 	i = 0;
-	j = 0;
+	j = 1;
 	k = 0;
 	res = 0;
 		if (BUFFER_SIZE > 0)
 		{
-				if (!stock || ft_strlen(stock) < BUFFER_SIZE)
+				if (!stock || ft_strlen(stock) == BUFFER_SIZE)
 				{	printf("aaaaa");
 					if (!stock || stock[0] == '\0')
 					{if (!(stock = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 						return (0);
 					read(fd, stock, BUFFER_SIZE);}
-					k = ft_get_index(k, stock, BUFFER_SIZE);
-					j++;
+					k = ft_get_index(j, stock, BUFFER_SIZE);
 					printf("j %zu\n", j);
 					printf("k = %zu\n", k);
 					if (stock[0]){
 						line[0] = ft_strdup("");
-						line[0] = ft_strjoin(line[0], stock);
+						line[0] = ft_strjoin(line[0], stock);}
 				while (k == BUFFER_SIZE * j)
 				{
 					read(fd, buf, BUFFER_SIZE);
 					printf("k ! = %zu\n", k);
-					k += ft_get_index(k - 1, buf, BUFFER_SIZE);
-					j++;
-					printf("j %zu\n", j);
 					line[0] = ft_strjoin(line[0], buf);
+					k = ft_get_index(++j, line[0], BUFFER_SIZE);
+					printf("j %zu\n", j);
+					printf("k !! = %zu\n", k);
 					printf("BUF = %s\n", buf);
 					printf("ft_strlen(line[0] %zu\n", ft_strlen(line[0]));
+					printf("line %s\n", line[0]);
 					if (k < ft_strlen(line[0]))
 					{
 						free(stock);
@@ -47,14 +47,14 @@ int		get_next_line(int fd, char **line)
 						printf("STOCK %s\n", stock);
 						while (k + i <= ft_strlen(line[0]))
 						line[0][k + i++] = '\0';
-						printf("%zu\n", k);}
+						printf("KKKKKKKKK %zu\n", k);}
 					printf("line[0] boucle petit BUFFER %s\n", line[0]);
-					return (1);
+					return (1);}
 				}
-				}
-					stock[BUFFER_SIZE - 1] = '\0';
+				//	stock[BUFFER_SIZE - 1] = '\0';
 				//	printf("stock :%s\n", stock);
-				}
+				else
+				{
 			//	k = ft_get_index(k, buf, BUFFER_SIZE) + 1;
 		//		if (i < BUFFER_SIZE - 1)
 			//		 ft_fill_stock(i, BUFFER_SIZE, &buf[i], BUFFER_SIZE - i);
@@ -100,6 +100,7 @@ int		get_next_line(int fd, char **line)
 					printf("res %d", res);
 				//	ft_del_stock(stock);
 					return(1);
+				}
 			}
 	//	}
 	return (-1);
