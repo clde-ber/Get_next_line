@@ -29,7 +29,7 @@ int		get_next_line(int fd, char **line)
 					if (stock[0]){
 						line[0] = ft_strdup("");
 						line[0] = ft_strjoin(line[0], stock);}
-				while (k == BUFFER_SIZE * j)
+				while (k <= BUFFER_SIZE * j)
 				{
 					read(fd, buf, BUFFER_SIZE);
 					printf("k ! = %zu\n", k);
