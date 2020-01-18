@@ -33,5 +33,5 @@ int				get_next_line(int fd, char **line)
 			ft_strlen(buf) + 1);
 		return (1);
 	}
-	return (fd < 0 || !fd || read(fd, buf, 0) < 0 || BUFFER_SIZE == 0) ? -1 : 0;
+	return (fd < 0 || read(fd, buf, 0) < 0 || BUFFER_SIZE == 0) ? -1 : 0;
 }
