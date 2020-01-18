@@ -28,5 +28,5 @@ int		get_next_line(int fd, char **line)
 		printf("%s\n", line[0]);
 		return (1);
 	}
-	return (fd < 0 || read(fd, buf, 0) || left == NULL || BUFFER_SIZE == 0) ? -1 : 0;
+	return (fd < 0 || left == NULL || BUFFER_SIZE == 0) ? -1 : 0;
 }
