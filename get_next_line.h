@@ -3,16 +3,12 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-#include <stdio.h>
 
-int		get_next_line(int fd, char **line);
-char	*ft_strjoin(char *s1, char *s2);
-size_t	ft_strlen(char *str);
-char	*ft_strdup(char *s1);
-int		ft_find_n(char *buf, size_t size);
-void	*ft_memcpy(void *dst, const void *src, size_t n);
-void	*ft_memmove(void *dst, const void *src, size_t len);
-void	ft_clear_left(char *left, size_t size);
-
+int			get_next_line(int fd, char **line);
+char		*ft_strjoin(char *s1, char *s2);
+size_t		ft_strlen(char *str);
+int			find_n(char *buf, size_t size);
+void		*ft_memmove(void *dst, const void *src, size_t len);
+char		*ft_create_a_clear_left(char *left, size_t size);
 
 #endif
