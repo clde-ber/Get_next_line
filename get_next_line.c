@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: clde-ber <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/07 09:12:28 by clde-ber          #+#    #+#             */
-/*   Updated: 2020/01/18 13:40:18 by clde-ber         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "get_next_line.h"
 #define BUFFER_SIZE 1000000
 
@@ -22,6 +10,8 @@ int		get_next_line(int fd, char **line)
 
 	i = 0;
 	buf[0] = '\0';
+	if (fd < 0 || read(fd, buf, 0))
+		return (-1);
 	if (!left)
 	{
 		if (!(left = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
