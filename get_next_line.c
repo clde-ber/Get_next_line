@@ -7,6 +7,13 @@ static char		*ft_read_a_join(size_t i, char *buf, char **line)
 	return (line[0]);
 }
 
+static char		*ft_update_left(char *left, char *buf, char **line)
+{
+	line[0][find_n(line[0], ft_strlen(line[0]))] = '\0';
+	ft_memmove(left, buf + find_n(buf, BUFFER_SIZE) + 1, ft_strlen(buf) + 1);
+	return (line[0]);
+}
+
 int				get_next_line(int fd, char **line)
 {
 	ssize_t		i;
@@ -28,10 +35,9 @@ int				get_next_line(int fd, char **line)
 	line[0] = (i == 0) ? line[0] : ft_strjoin(line[0], buf);
 	if (find_n(line[0], ft_strlen(line[0])) != -1)
 	{
-		line[0][find_n(line[0], ft_strlen(line[0]))] = '\0';
-		ft_memmove(left, buf + find_n(buf, BUFFER_SIZE) + 1,
-			ft_strlen(buf) + 1);
+		line[0] = ft_update_left(left, buf, line);
 		return (1);
 	}
+	left = 0;
 	return (fd < 0 || read(fd, buf, 0) < 0 || BUFFER_SIZE == 0) ? -1 : 0;
 }
