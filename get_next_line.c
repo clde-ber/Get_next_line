@@ -3,7 +3,7 @@
 static char		*ft_read_a_join(size_t i, char *buf, char **line)
 {
 	buf[i] = '\0';
-	line[0] = ft_strjoin(line[0], buf);
+	line[0] = join_a_free(line[0], buf);
 	return (line[0]);
 }
 
@@ -22,7 +22,7 @@ int				get_next_line(int fd, char **line)
 
 	buf[0] = '\0';
 	left = (!left) ? ft_create_a_clear_left(left, BUFFER_SIZE) : left;
-	line[0] = ft_strjoin(left, "");
+	line[0] = join_a_free(left, "");
 	ft_create_a_clear_left(left, BUFFER_SIZE);
 	if (find_n(line[0], ft_strlen(line[0])) != -1)
 	{
@@ -32,7 +32,7 @@ int				get_next_line(int fd, char **line)
 	while (find_n(buf, BUFFER_SIZE) == -1 &&
 	(i = read(fd, buf, BUFFER_SIZE)) > 0)
 		line[0] = ft_read_a_join(i, buf, line);
-	line[0] = (i == 0) ? line[0] : ft_strjoin(line[0], buf);
+	line[0] = (i == 0) ? line[0] : join_a_free(line[0], buf);
 	if (find_n(line[0], ft_strlen(line[0])) != -1)
 	{
 		line[0] = ft_update_left(left, buf, line);
