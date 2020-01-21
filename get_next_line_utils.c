@@ -22,10 +22,7 @@ char	*ft_create_a_clear_left(char *left, size_t size)
 	{
 		k = find_n(left, size);
 		if (k != -1)
-		{
-			ft_memmove(left, left + k + 1, ft_strlen(left));
-			left[ft_strlen(left)] = '\0';
-		}
+			ft_memmove(left, left + k + 1, ft_strlen(left + k) + 1);
 		else
 			left[0] = '\0';
 		return (left);
@@ -76,7 +73,7 @@ size_t	ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*join_a_free(char *s1, char *s2)
 {
 	size_t	i;
 	size_t	j;
